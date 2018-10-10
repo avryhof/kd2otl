@@ -1,0 +1,15 @@
+language: python
+python:
+  - "3.6"
+# command to install dependencies
+script:
+  - python manage.py cms test
+  - coverage run manage.py cms test
+branches:
+  only:
+    - master
+install:
+  - pip install codecov
+  - pip install -r requirements.txt
+after_success:
+- codecov
