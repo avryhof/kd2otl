@@ -128,8 +128,13 @@ WSGI_APPLICATION = 'kd2otl.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': os.environ['KD2OTL_DB_ENGINE'],
+        'NAME': os.environ['KD2OTL_DB_NAME'],
+        'USER': os.environ['KD2OTL_DB_USER'],
+        'PASSWORD': os.environ['KD2OTL_DB_PASSWORD'],
+        'HOST': os.environ['KD2OTL_DB_HOST'],
+        'PORT': os.environ['KD2OTL_DB_PORT'],
+        'CONN_MAX_AGE': 600,
     }
 }
 
