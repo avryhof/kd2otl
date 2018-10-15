@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '8%x^ul*%402f($2u7n093kx-!rv49si5_=97v5xe$vyng@#j-s'
+SECRET_KEY = os.environ['KD2OTL_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+
+    'bootstrap4',
 
     'cms',
     'menus',
@@ -99,7 +101,9 @@ ROOT_URLCONF = 'kd2otl.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,6 +122,10 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+CMS_TEMPLATES = [
+    ('home.html', 'Home page template'),
 ]
 
 WSGI_APPLICATION = 'kd2otl.wsgi.application'
