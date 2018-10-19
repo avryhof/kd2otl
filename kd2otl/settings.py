@@ -198,3 +198,27 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media')
 
 ERROR_LOG = os.path.join(os.path.dirname(BASE_DIR), 'logs', 'error.log')
+
+try:
+    LOGGER_LEVEL = os.environ['LOGGER_LEVEL']
+except KeyError:
+    LOGGER_LEVEL = 'ERROR'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': LOGGER_LEVEL,
+            'class': 'logging.FileHandler',
+            'filename': ERROR_LOG,
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': LOGGER_LEVEL,
+            'propagate': True,
+        },
+    },
+}
