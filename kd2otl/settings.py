@@ -25,7 +25,7 @@ SECRET_KEY = os.environ['KD2OTL_SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '138.197.57.94', '.k2dotl.com', '.kd2otl.com']
 SITE_ID = 1
 
 
